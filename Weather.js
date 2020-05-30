@@ -19,10 +19,10 @@ export default function Weather({ temperature, condition }) {
                     color="white"
                 ></MaterialCommunityIcons>
                 <Text style={styles.temperature}>{temperature}℃</Text>
-                <Text>{condition}</Text>
             </View>
-            <View style={styles.halfContainer}>
-                <Text>It's rainy</Text>
+            <View style={{...styles.halfContainer, ...styles.textContainer}}>
+                <Text style={styles.title}>{weatherOptions[condition].title}</Text>
+                <Text style={styles.subtitle}>{weatherOptions[condition].subtitle}</Text>
             </View>
         </LinearGradient>
     );
@@ -42,6 +42,21 @@ const styles = StyleSheet.create({
     temperature: {
         fontSize: 36,
         color: "white"
+    },
+    title: {
+        color: "white",
+        fontSize: 34,
+        marginBottom: 20,
+        fontWeight: "600"
+    },
+    subtitle: {
+        color: "white",
+        fontSize: 20,
+        fontWeight: "300"
+    },
+    textContainer: {
+        paddingHorizontal: 20,
+        alignItems: "flex-start"
     }
 });
 
@@ -70,66 +85,92 @@ Weather.propTypes = {
 const weatherOptions = {
     Thunderstorm: {
         iconName: "weather-lightning-rainy",
-        gradient: ["#0F2027", "#203A43", "#2C5364"]
+        gradient: ["#0F2027", "#203A43", "#2C5364"],
+        title: "Thunderstorm",
+        subtitle: "Don't go outside"
     },
     Drizzle: {
         iconName: "weather-cloudy",
-        gradient: ["#606c88", "#3f4c6b"]
+        gradient: ["#606c88", "#3f4c6b"],
+        title: "Drizzle",
+        subtitle: "You will need an umbrella, maybe"
     },
     Rain: {
         iconName: "weather-rainy",
-        gradient: ["#304352", "#d7d2cc"]
+        gradient: ["#304352", "#d7d2cc"],
+        title: "Rain",
+        subtitle: "Take your umbrella"
     },
     Snow: {
         iconName: "weather-snowy",
-        gradient: ["#FFFDE4", "#005AA7"]
+        gradient: ["#FFFDE4", "#005AA7"],
+        title: "Snow",
+        subtitle: "Don't drive and stay home with family"
     },
     Mist: {
         iconName: "weather-fog",
-        gradient: ["#3E5151", "#DECBA4"]
+        gradient: ["#3E5151", "#DECBA4"],
+        title: "Mist",
+        subtitle: "Mist will be good for your skin"
     },
     Smoke: {
         iconName: "weather-fog",
-        gradient: ["#3E5151", "#DECBA4"]
+        gradient: ["#3E5151", "#DECBA4"],
+        title: "Smoke",
+        subtitle: "Don't smoke everywhere"
     },
     Haze: {
         iconName: "weather-hazy",
-        gradient: ["#F3904F", "#3B4371"]
-    },
-    Dust: {
-        iconName: "weather-fog",
-        gradient: ["#3E5151", "#DECBA4"]
+        gradient: ["#F3904F", "#3B4371"],
+        title: "Haze",
+        subtitle: "Sunset will be beautiful"
     },
     Fog: {
         iconName: "weather-fog",
-        gradient: ["#3E5151", "#DECBA4"]
+        gradient: ["#3E5151", "#DECBA4"],
+        title: "Fog",
+        subtitle: "Don't drive! It's dangerous"
     },
     Sand: {
         iconName: "weather-fog",
-        gradient: ["#3E5151", "#DECBA4"]
+        gradient: ["#3E5151", "#DECBA4"],
+        title: "Sand",
+        subtitle: "Take your mask"
     },
     Dust: {
         iconName: "weather-fog",
-        gradient: ["#3E5151", "#DECBA4"]
+        gradient: ["#3E5151", "#DECBA4"],
+        title: "Dust",
+        subtitle: "Take your mask"
     },
     Ash: {
         iconName: "weather-fog",
-        gradient: ["#3E5151", "#DECBA4"]
+        gradient: ["#3E5151", "#DECBA4"],
+        title: "Ash",
+        subtitle: "Take your mask"
     },
     Squall: {
         iconName: "weather-pouring",
-        gradient: ["#0F2027", "#203A43", "#2C5364"]
+        gradient: ["#0F2027", "#203A43", "#2C5364"],
+        title: "Squall",
+        subtitle: "Please avoid when being raining"
     },
     Tornado: {
         iconName: "weather-tornado",
-        gradient: ["#2C3E50", "#4CA1AF"]
+        gradient: ["#2C3E50", "#4CA1AF"],
+        title: "Tornado",
+        subtitle: "Go to the bunker! Now!"
     },
     Clear: {
         iconName: "weather-sunny",
-        gradient: ["#2980B9", "#6DD5FA"]
+        gradient: ["#2980B9", "#6DD5FA"],
+        title: "Sunny",
+        subtitle: "Sunshine gives me Vitamin-D"
     },
     Clouds: {
         iconName: "weather-cloudy",
-        gradient: ["#606c88", "#3f4c6b"]
+        gradient: ["#606c88", "#3f4c6b"],
+        title: "Clouds",
+        subtitle: "Gray sky makes me down"
     }
 };
