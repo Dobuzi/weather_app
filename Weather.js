@@ -5,7 +5,6 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 
 export default function Weather({ temperature, condition }) {
-    console.log(weatherOptions[condition].iconName);
     return (
         <LinearGradient
             colors={weatherOptions[condition].gradient}
@@ -20,7 +19,7 @@ export default function Weather({ temperature, condition }) {
                 ></MaterialCommunityIcons>
                 <Text style={styles.temperature}>{temperature}℃</Text>
             </View>
-            <View style={{...styles.halfContainer, ...styles.textContainer}}>
+            <View style={styles.textContainer}>
                 <Text style={styles.title}>{weatherOptions[condition].title}</Text>
                 <Text style={styles.subtitle}>{weatherOptions[condition].subtitle}</Text>
             </View>
@@ -30,9 +29,7 @@ export default function Weather({ temperature, condition }) {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center"
+        flex: 1
     },
     halfContainer: {
         flex: 1,
@@ -47,16 +44,20 @@ const styles = StyleSheet.create({
         color: "white",
         fontSize: 34,
         marginBottom: 20,
-        fontWeight: "600"
+        fontWeight: "600",
+        textAlign: "left"
     },
     subtitle: {
         color: "white",
         fontSize: 20,
-        fontWeight: "300"
+        fontWeight: "300",
+        textAlign: "left"
     },
     textContainer: {
-        paddingHorizontal: 20,
-        alignItems: "flex-start"
+        paddingHorizontal: 40,
+        alignItems: "flex-start",
+        justifyContent: "center",
+        flex: 1
     }
 });
 
