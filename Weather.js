@@ -1,22 +1,49 @@
 import React from 'react';
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, StatusBar } from "react-native";
 import PropTypes from "prop-types";
-import { Ionicons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function Weather({ temperature, condition }) {
+    console.log(weatherOptions[condition].iconName);
     return (
-        <View style={styles.container}>
+        <LinearGradient
+            colors={weatherOptions[condition].gradient}
+            style={styles.container}
+        >
+            <StatusBar barStyle="light-content" />
             <View style={styles.halfContainer}>
-                <Ionicons size={86} name="ios-rainy"></Ionicons>
+                <MaterialCommunityIcons
+                    size={86}
+                    name={weatherOptions[condition].iconName}
+                    color="white"
+                ></MaterialCommunityIcons>
                 <Text style={styles.temperature}>{temperature}℃</Text>
                 <Text>{condition}</Text>
             </View>
             <View style={styles.halfContainer}>
                 <Text>It's rainy</Text>
             </View>
-        </View>
+        </LinearGradient>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center"
+    },
+    halfContainer: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center"
+    },
+    temperature: {
+        fontSize: 36,
+        color: "white"
+    }
+});
 
 Weather.propTypes = {
     temperature: PropTypes.number.isRequired,
@@ -40,18 +67,69 @@ Weather.propTypes = {
     ]).isRequired
 };
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center"
+const weatherOptions = {
+    Thunderstorm: {
+        iconName: "weather-lightning-rainy",
+        gradient: ["#0F2027", "#203A43", "#2C5364"]
     },
-    halfContainer: {
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center"
+    Drizzle: {
+        iconName: "weather-cloudy",
+        gradient: ["#606c88", "#3f4c6b"]
     },
-    temperature: {
-        fontSize: 36
+    Rain: {
+        iconName: "weather-rainy",
+        gradient: ["#304352", "#d7d2cc"]
+    },
+    Snow: {
+        iconName: "weather-snowy",
+        gradient: ["#FFFDE4", "#005AA7"]
+    },
+    Mist: {
+        iconName: "weather-fog",
+        gradient: ["#3E5151", "#DECBA4"]
+    },
+    Smoke: {
+        iconName: "weather-fog",
+        gradient: ["#3E5151", "#DECBA4"]
+    },
+    Haze: {
+        iconName: "weather-hazy",
+        gradient: ["#F3904F", "#3B4371"]
+    },
+    Dust: {
+        iconName: "weather-fog",
+        gradient: ["#3E5151", "#DECBA4"]
+    },
+    Fog: {
+        iconName: "weather-fog",
+        gradient: ["#3E5151", "#DECBA4"]
+    },
+    Sand: {
+        iconName: "weather-fog",
+        gradient: ["#3E5151", "#DECBA4"]
+    },
+    Dust: {
+        iconName: "weather-fog",
+        gradient: ["#3E5151", "#DECBA4"]
+    },
+    Ash: {
+        iconName: "weather-fog",
+        gradient: ["#3E5151", "#DECBA4"]
+    },
+    Squall: {
+        iconName: "weather-pouring",
+        gradient: ["#0F2027", "#203A43", "#2C5364"]
+    },
+    Tornado: {
+        iconName: "weather-tornado",
+        gradient: ["#2C3E50", "#4CA1AF"]
+    },
+    Clear: {
+        iconName: "weather-sunny",
+        gradient: ["#2980B9", "#6DD5FA"]
+    },
+    Clouds: {
+        iconName: "weather-cloudy",
+        gradient: ["#606c88", "#3f4c6b"]
     }
-});
+};
