@@ -13,13 +13,13 @@ export default function Loading() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#f6e58d",
+        backgroundColor: "#3E5151",
         justifyContent: "flex-end",
         paddingHorizontal: 30,
         paddingVertical: 100
     },
     text: {
         fontSize: 30,
-        color: "#2c2c2c"
+        color: "white"
     }
 });
